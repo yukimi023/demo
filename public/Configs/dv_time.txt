@@ -1,0 +1,13 @@
+[Phase]
+00:00-06:18 Preparing
+06:18-06:58 Knotting
+06:58-13:09 Resecting
+13:09-13:22 Knotting
+13:22-35:02 Resecting
+35:02-35:39 Releasing
+35:39-End Postprocessing
+
+[Effectiveness]
+00:00-06:58   Not effective
+06:58-35:02   Effective
+35:02-End   Not effective

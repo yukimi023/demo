@@ -1,0 +1,141 @@
+$phase-color: rgba(58, 82, 138, 0.7);
+$effectiveness-color: rgba(133, 69, 156, 0.7);
+
+.demo3-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 0px;
+  height: 100%;
+  overflow: hidden;
+  
+  .info-section {
+    order: 1;
+    flex: 1;
+    min-width: 300px;
+    // display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+    .info-header {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      
+      .info-title {
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: 500;
+        margin: 0 0 20px 0;
+        text-align: center;
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        line-height: 1.3;
+      }
+      
+      .info-description {
+        color: #ffffff;
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0;
+        padding: 15px;
+        // text-align: justify;
+        background-color: rgba(82, 92, 235, 0.05);
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(5px);
+        
+        .phase-text-color {
+          color: mix($phase-color, white, 60%);
+          font-weight: 500;
+        }
+        
+        .effectiveness-text-color {
+          color: mix($effectiveness-color, white, 60%);
+          font-weight: 500;
+        }
+      }
+    }
+    
+    .status-display {
+      margin-top: 20px;
+      margin-bottom: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      
+      .phase-text, .effectiveness-text {
+        display: flex;
+        align-items: center;
+        color: #ffffff;
+        padding: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(5px);
+        height: 42px;
+        box-sizing: border-box;
+        
+        span {
+          &:first-child {
+            width: 40%;
+            text-align: center;
+            padding-right: 15px;
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+          }
+          &:last-child {
+            width: 60%;
+            text-align: center;
+            margin-left: 20px;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.3);
+            font-family: monospace;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+      
+      .phase-text {
+        background-color: $phase-color;
+      }
+      
+      .effectiveness-text {
+        background-color: $effectiveness-color;
+      }
+    }
+  }
+  
+  .video-section {
+    order: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    
+    video {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+  }
+} 
