@@ -307,7 +307,7 @@ const Demo2 = () => {
       <div className="middle-section">
         <div className="section-title">Preoperative CT Image</div>
         <div className="image-container">
-          <img src="/Images/Demo2/CT2.png" alt="CT扫描图" />
+          <img src="/Images/liver1.png" alt="CT扫描图" />
         </div>
         
         <div className="arrow-container">
