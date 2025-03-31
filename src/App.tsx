@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Demo1 from './Demos/Demo1';
 import Demo2 from './Demos/Demo2';
+import Demo3 from './Demos/Demo3';
 import './index.scss';
 
 const App = () => {
@@ -8,8 +9,8 @@ const App = () => {
     const demos = [
         { id: 1, component: <Demo1 /> },
         { id: 2, component: <Demo2 /> },
-        // 注释掉 Demo3 和 Demo4
-        // { id: 3, component: <Demo3 /> },
+        { id: 3, component: <Demo3 /> },
+        // 注释掉 Demo4
         // { id: 4, component: <Demo4 /> }
     ];
     const CurrentDemo = demos[currentDemo].component;
@@ -26,6 +27,7 @@ const App = () => {
         <div className="app">
             <header className="header">
                 <img className="left-logo" src="./Images/cu_logo.png" alt="Left Logo" />
+                <img className="nfyy-logo" src="./Images/nfyy_logo.png" alt="NFYY Logo" />
                 <span>Medical Research Platform</span>
                 <img className="right-logo" src="./Images/imixr_logo.png" alt="Right Logo" />
             </header>

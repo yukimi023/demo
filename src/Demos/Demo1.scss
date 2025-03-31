@@ -7,9 +7,11 @@ $effectiveness-color: rgba(133, 69, 156, 0.7);
   display: flex;
   height: 100%;
   width: 100%;
+  gap: 20px;
   
   .info-section {
     width: 400px;
+    height: 100%;
     padding: 20px;
     background-color: #f5f5f5;
     display: flex;
@@ -21,6 +23,7 @@ $effectiveness-color: rgba(133, 69, 156, 0.7);
     border: 3px solid rgba(255, 255, 255, 0.15);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
     
     .info-header {
       flex: 0;
@@ -123,7 +126,17 @@ $effectiveness-color: rgba(133, 69, 156, 0.7);
   
   .video-section {
     flex: 1;
+    height: 100%;
     padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     
     video {
       width: 100%;
