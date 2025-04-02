@@ -8,6 +8,8 @@
   background-color: transparent;
   box-sizing: border-box;
   min-height: 600px;
+  position: relative;
+  overflow: hidden;
 
   .left-text-section {
     width: 20%;
@@ -76,13 +78,14 @@
     overflow: hidden;
     background-color: transparent;
     height: 100%;
-    min-height: 450px;
+    min-height: 400px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2), 0 0 8px rgba(120, 130, 180, 0.4), inset 0 0 3px rgba(255, 255, 255, 0.1);
     margin-right: 20px;
+    box-sizing: border-box;
 
     .section-title {
       width: 100%;
-      padding: 8px 0;
+      padding: 5px 0;
       text-align: center;
       color: #ffffff;
       font-size: 22px !important;
@@ -116,12 +119,12 @@
 
     .image-container {
       width: calc(100% - 30px);
-      margin: 8px 15px 4px 15px;
+      margin: 5px 15px 5px 15px;
       display: flex;
       align-items: center;
       justify-content: center;
       background-color: transparent;
-      margin-bottom: 5px;
+      margin-bottom: 0;
       
       img {
         width: 100%;
@@ -161,15 +164,17 @@
     .model-container {
       width: calc(100% - 20px);
       flex: 1;
-      margin: 0 10px 10px 10px;
+      margin: 0 10px 5px 10px;
       position: relative;
       background-color: #2a2a2a;
       border: 2px solid rgba(255, 255, 255, 0.2);
       border-radius: 10px;
       overflow: hidden;
-      margin-top: 5px;
+      margin-top: 0;
       display: flex;
       box-sizing: border-box !important;
+      z-index: 10 !important;
+      transform: none !important;
 
       canvas {
         width: 100% !important;
@@ -205,12 +210,15 @@
       justify-content: center;
       align-items: center;
       height: 60px;
-      width: 100%;
+      width: calc(100% - 30px);
       padding: 10px 0;
+      gap: 20px;
+      margin: 0 auto;
       
       img {
         height: 60px;
         width: auto;
+        flex-shrink: 0;
       }
     }
 
@@ -224,6 +232,8 @@
       background-color: transparent;
       min-height: 180px;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2), 0 0 8px rgba(120, 130, 180, 0.4), inset 0 0 3px rgba(255, 255, 255, 0.1);
+      width: calc(100% - 30px);
+      margin: 0 auto;
 
       .section-title {
         width: 100%;
@@ -242,6 +252,8 @@
 
       &.bottom {
         margin-top: 0;
+        position: relative;
+        z-index: 5 !important;
       }
 
       .video-container {
@@ -253,12 +265,17 @@
         position: relative;
         min-height: 150px;
         border-radius: 10px;
+        z-index: 0;
+        overflow: visible !important;
+        width: 100%;
 
         video {
           width: 100%;
           height: 100%;
           object-fit: contain;
           border-radius: 10px;
+          position: relative;
+          z-index: 1 !important;
         }
         
         .error-message {
@@ -274,15 +291,138 @@
         }
       }
     }
+
+    .video-section.bottom {
+      .video-container {
+        position: relative;
+
+        .mapping-toggle {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          background-color: rgba(0, 0, 0, 0.5);
+          padding: 5px 10px;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          z-index: 5;
+
+          .mapping-toggle-label {
+            color: white;
+            font-size: 12px;
+          }
+
+          .mapping-toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 34px;
+            height: 20px;
+
+            input {
+              opacity: 0;
+              width: 0;
+              height: 0;
+            }
+
+            .slider {
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: #ccc;
+              transition: .4s;
+              border-radius: 20px;
+
+              &:before {
+                position: absolute;
+                content: "";
+                height: 16px;
+                width: 16px;
+                left: 2px;
+                bottom: 2px;
+                background-color: white;
+                transition: .4s;
+                border-radius: 50%;
+              }
+            }
+
+            input:checked + .slider {
+              background-color: #2196F3;
+            }
+
+            input:checked + .slider:before {
+              transform: translateX(14px);
+            }
+          }
+        }
+      }
+    }
   }
 }
 
-// 修改血管切换控件样式
-.vessel-toggle {
+// 确保视频容器的 z-index 低于 overlay canvas
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: visible !important;
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 1 !important;
+  }
+}
+
+// 确保箭头的 z-index 高于视频容器
+.middle-to-right {
+  position: absolute; 
+  left: calc(60% - 40px);
+  top: 75%;
+  transform: translateY(-50%);
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 15 !important;
+  margin: 0;
+  
+  img {
+    height: 60px;
+    width: auto;
+    transform: rotate(-90deg);
+  }
+}
+
+// 移除之前的悬浮箭头样式
+.process-arrow {
+  display: none;
+}
+
+// 确保 model-container 不会意外遮挡
+.middle-section .model-container {
+    position: relative;
+    z-index: 1;
+    // ... 其他样式
+}
+
+// 确保视频容器不会意外遮挡
+.right-section .video-container {
+    position: relative;
+    z-index: 1;
+    // ... 其他样式
+}
+
+// 添加映射显示控制开关样式
+.mapping-toggle {
   position: absolute;
   bottom: 15px;
-  right: 15px;
-  z-index: 1000;
+  left: 15px;
+  z-index: 25 !important;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -318,7 +458,7 @@
       height: 0;
 
       &:checked + .slider {
-        background: #ff6060;
+        background: #60ff60; // 绿色开关
 
         &::before {
           transform: translateX(18px);
@@ -353,27 +493,72 @@
   }
 }
 
-// 重新设计中间到右侧的箭头容器
-.middle-to-right {
-  position: absolute; 
-  left: calc(60% - 40px);
-  top: 75%;
-  transform: translateY(-50%);
-  width: 60px;
+// 确保 overlay canvas 在模型容器内
+canvas[ref="overlayCanvasRef"] {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 9999 !important;
+  pointer-events: none !important;
+  mix-blend-mode: lighten;
+}
+
+.correspondence-toggle {
+  background-color: rgba(40, 40, 40, 0.8);
+  padding: 8px 12px;
+  border-radius: 20px;
+  z-index: 15;
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 10;
-  margin: 0;
-  
-  img {
-    height: 60px;
-    width: auto;
-    transform: rotate(-90deg);
+  color: #eee;
+  font-size: 0.9em;
+  gap: 10px;
+  flex-shrink: 0;
+
+  label {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    width: 50px;
+    height: 28px;
+    background-color: #76767c;
+    border-radius: 28px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s ease-in-out;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: white;
+      top: 2px;
+      left: 2px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    &:checked {
+      background-color: #34c759;
+
+      &::before {
+        transform: translateX(22px);
+      }
+    }
   }
 }
 
-// 移除之前的悬浮箭头样式
-.process-arrow {
-  display: none;
+.overlay-status {
+  z-index: 20;
+}
+
+.loading-overlay {
+  // ... (existing styles) ...
 } 
