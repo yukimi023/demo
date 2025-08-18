@@ -1,0 +1,412 @@
+@import '../index.scss';
+
+.fullscreen-card {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  background-color: $theme-grey;
+  padding: 0;
+  box-sizing: border-box;
+
+  .card-container {
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(8px);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    // 默认背景
+    /* background: linear-gradient(
+      to top,
+      rgba(35, 45, 90, 0.9) 0%,
+      rgba(45, 55, 95, 0.7) 40%,
+      rgba(60, 65, 90, 0.5) 100%
+    ); */
+    
+    // 2D-3D Liver Fusion背景
+    /* &.category-liver-fusion {
+      background: #ee3a8a;
+    } */
+    
+    // Video Assisted Analysis背景  
+    /* &.category-video-analysis {
+      background: #bdd7ef;
+    } */
+    
+    // Soft-Tissue Deformation背景
+    /* &.category-deformation {
+      background: #7bb3f0;
+    } */
+
+
+
+    .card-number {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      background: linear-gradient(135deg, rgba(50, 60, 95, 0.8) 0%, rgba(60, 70, 110, 0.8) 100%);
+      color: white;
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 47px;
+      font-weight: bold;
+      z-index: 2;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-image {
+      flex: 1;
+      min-height: 50vh;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.3) 0%,
+          rgba(0, 0, 0, 0.1) 40%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        z-index: 1;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 200px;
+        z-index: 1;
+      }
+      
+      // 默认蓝色渐变
+      &::before {
+        background: linear-gradient(
+          to top,
+          rgba(35, 45, 90, 1.0) 0%,
+          rgba(35, 45, 90, 0.8) 20%,
+          rgba(35, 45, 90, 0.5) 40%,
+          rgba(35, 45, 90, 0.2) 70%,
+          rgba(35, 45, 90, 0) 100%
+        );
+      }
+    }
+    
+    // 2D-3D Liver Fusion类别的渐变
+    &.category-liver-fusion .card-image::before {
+      background: linear-gradient(
+        to top,
+        rgba(30, 58, 138, 1.0) 0%,
+        rgba(30, 58, 138, 0.8) 20%,
+        rgba(30, 58, 138, 0.5) 40%,
+        rgba(30, 58, 138, 0.2) 70%,
+        rgba(30, 58, 138, 0) 100%
+      ) !important;
+    }
+    
+    // Video Assisted Analysis类别的渐变
+    &.category-video-analysis .card-image::before {
+      background: linear-gradient(
+        to top,
+        rgba(37, 99, 235, 1.0) 0%,
+        rgba(37, 99, 235, 0.8) 20%,
+        rgba(37, 99, 235, 0.5) 40%,
+        rgba(37, 99, 235, 0.2) 70%,
+        rgba(37, 99, 235, 0) 100%
+      ) !important;
+    }
+    
+    // Soft-Tissue Deformation类别的渐变
+    &.category-deformation .card-image::before {
+      background: linear-gradient(
+        to top,
+        rgba(123, 179, 240, 1.0) 0%,
+        rgba(123, 179, 240, 0.8) 20%,
+        rgba(123, 179, 240, 0.5) 40%,
+        rgba(123, 179, 240, 0.2) 70%,
+        rgba(123, 179, 240, 0) 100%
+      ) !important;
+    }
+    
+    // 新增卡片渐变背景
+    &.card-gradient-1 .card-image::before {
+      background: linear-gradient(
+        to top,
+        rgba(189, 215, 239, 1.0) 0%,
+        rgba(189, 215, 239, 0.8) 20%,
+        rgba(189, 215, 239, 0.5) 40%,
+        rgba(189, 215, 239, 0.2) 70%,
+        rgba(189, 215, 239, 0) 100%
+      ) !important;
+    }
+    
+    &.card-gradient-2 .card-image::before {
+      background: linear-gradient(
+        to top,
+        rgba(198, 225, 181, 1.0) 0%,
+        rgba(198, 225, 181, 0.8) 20%,
+        rgba(198, 225, 181, 0.5) 40%,
+        rgba(198, 225, 181, 0.2) 70%,
+        rgba(198, 225, 181, 0) 100%
+      ) !important;
+    }
+    
+    &.card-gradient-3 .card-image::before {
+      background: linear-gradient(
+        to top,
+        rgba(255, 243, 204, 1.0) 0%,
+        rgba(255, 243, 204, 0.8) 20%,
+        rgba(255, 243, 204, 0.5) 40%,
+        rgba(255, 243, 204, 0.2) 70%,
+        rgba(255, 243, 204, 0) 100%
+      ) !important;
+    }
+    
+    &.card-gradient-4 .card-image::before {
+      background: linear-gradient(
+        to top,
+        rgba(255, 230, 152, 1.0) 0%,
+        rgba(255, 230, 152, 0.8) 20%,
+        rgba(255, 230, 152, 0.5) 40%,
+        rgba(255, 230, 152, 0.2) 70%,
+        rgba(255, 230, 152, 0) 100%
+      ) !important;
+    }
+    
+    &.card-gradient-5 .card-image::before {
+      background: linear-gradient(
+        to top,
+        rgba(251, 229, 214, 1.0) 0%,
+        rgba(251, 229, 214, 0.8) 20%,
+        rgba(251, 229, 214, 0.5) 40%,
+        rgba(251, 229, 214, 0.2) 70%,
+        rgba(251, 229, 214, 0) 100%
+      ) !important;
+    }
+    
+    &.card-gradient-6 .card-image::before {
+      background: linear-gradient(
+        to top,
+        rgba(231, 230, 230, 1.0) 0%,
+        rgba(231, 230, 230, 0.8) 20%,
+        rgba(231, 230, 230, 0.5) 40%,
+        rgba(231, 230, 230, 0.2) 70%,
+        rgba(231, 230, 230, 0) 100%
+      ) !important;
+    }
+
+    &.card-gradient-new1 .card-image::before {
+      background: linear-gradient(
+        to top,
+        rgba(197, 225, 181, 1.0) 0%,
+        rgba(197, 225, 181, 0.8) 20%,
+        rgba(197, 225, 181, 0.5) 40%,
+        rgba(197, 225, 181, 0.2) 70%,
+        rgba(197, 225, 181, 0) 100%
+      ) !important;
+    }
+    
+    &.card-gradient-new2 .card-image::before {
+      background: linear-gradient(
+        to top,
+        rgba(255, 243, 204, 1.0) 0%,
+        rgba(255, 243, 204, 0.8) 20%,
+        rgba(255, 243, 204, 0.5) 40%,
+        rgba(255, 243, 204, 0.2) 70%,
+        rgba(255, 243, 204, 0) 100%
+      ) !important;
+    }
+    
+    &.card-gradient-new3 .card-image::before {
+      background: linear-gradient(
+        to top,
+        rgba(189, 215, 238, 1.0) 0%,
+        rgba(189, 215, 238, 0.8) 20%,
+        rgba(189, 215, 238, 0.5) 40%,
+        rgba(189, 215, 238, 0.2) 70%,
+        rgba(189, 215, 238, 0) 100%
+      ) !important;
+    }
+
+
+    .card-image {
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      // landmark图片向上取景
+      &.landmark-image img {
+        object-position: center 5%;
+      }
+
+      &.card-v1-image img {
+        object-position: center 100%;
+      }
+
+      &.card-v2-image img {
+        object-position: center 90%;
+      }
+
+      &.card-v3-image img {
+        object-position: center 15%;
+      }
+
+      &.color-block {
+        background: linear-gradient(135deg, rgba(50, 60, 95, 0.7) 0%, rgba(40, 50, 85, 0.6) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .card-icon {
+          font-size: 144px;
+          color: rgba(255, 255, 255, 0.15);
+          font-weight: bold;
+          text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+      }
+    }
+
+    .card-info {
+      padding: 60px;
+      flex: 0 0 auto;
+      background: none;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 2;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      .category-title {
+        color: #7030a0;
+        margin: 0 0 20px 0;
+        font-size: 42px;
+        font-weight: bold;
+        text-decoration: underline;
+        text-underline-offset: 12px;
+        text-decoration-thickness: 3px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        text-align: left;
+      }
+
+      h1 {
+        color: #204d79;
+        margin: 0 0 30px 0;
+        font-size: 58px;
+        font-weight: 600;
+        line-height: 1.2;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        text-align: left;
+      }
+
+      p {
+        color: #204d79;
+        margin: 0;
+        font-size: 29px;
+        line-height: 1.6;
+        white-space: pre-line;
+        text-align: left;
+        
+        // Publication字样加粗
+        .publication-label {
+          font-weight: bold;
+        }
+      }
+
+      // ID5全屏卡片使用正常的白色文字
+      &.card-info-id5 {
+        .category-title {
+          color: #7030a0; // 正常白色
+        }
+        
+        p {
+          color: #204d79; // 正常白色
+          
+          .publication-label {
+            color: #204d79;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  // 响应式设计
+  @media (max-width: 1024px) {
+    .card-container {
+      .card-image {
+        min-height: 45vh;
+      }
+      
+      .card-info {
+        padding: 30px;
+
+        .category-title {
+          font-size: 32px;
+          margin-bottom: 15px;
+        }
+
+        h1 {
+          font-size: 34px;
+        }
+
+        p {
+          font-size: 19px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .card-container {
+      .card-number {
+        width: 65px;
+        height: 65px;
+        font-size: 31px;
+        top: 20px;
+        left: 20px;
+      }
+
+      .card-image {
+        min-height: 40vh;
+      }
+
+      .card-info {
+        padding: 20px;
+
+        .category-title {
+          font-size: 24px;
+          margin-bottom: 10px;
+        }
+
+        h1 {
+          font-size: 29px;
+          margin-bottom: 15px;
+        }
+
+        p {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+} 

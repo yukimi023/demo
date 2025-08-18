@@ -1,0 +1,215 @@
+@import '../index.scss';
+
+.demo4-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: transparent;
+  box-sizing: border-box;
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+  max-height: 100%;
+
+  .video-grid {
+    width: 100%;
+    height: 100%;
+    max-width: 1400px;
+    max-height: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    
+    .video-row {
+      flex: 1;
+      display: flex;
+      gap: 40px;
+      min-height: 300px;
+      
+      .video-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid rgba(120, 130, 180, 0.5);
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: transparent;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2), 0 0 8px rgba(120, 130, 180, 0.4), inset 0 0 3px rgba(255, 255, 255, 0.1);
+        min-height: 200px;
+        
+        .section-title {
+          flex-shrink: 0;
+          height: auto;
+          margin: 0;
+          width: 100%;
+          padding: 12px 0;
+          text-align: center;
+          color: #ffffff;
+          font-size: 20px;
+          font-weight: 500;
+          letter-spacing: 0.5px;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-container {
+          flex: 1;
+          background-color: #000000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          min-height: 200px;
+          border-radius: 0 0 8px 8px;
+          overflow: hidden;
+          
+          video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 1;
+          }
+          
+          .error-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 5;
+            font-size: 14px;
+            text-align: center;
+          }
+        }
+              }
+      }
+    }
+    
+    // 箭头样式
+    .arrow-horizontal {
+      position: absolute;
+      top: 25%;  // 第一行视频的中心位置
+      left: 50%;  // 视频之间的中心位置
+      transform: translate(-50%, -50%) rotate(-90deg);
+      z-index: 15;
+      width: 60px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+      
+      img {
+        height: 30px;
+        width: auto;
+        opacity: 0.9;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+        // 水平箭头旋转-90度，指向右边
+      }
+    }
+    
+    .arrow-vertical {
+      position: absolute;
+      top: 50%;  // 视频行之间的中心位置
+      left: 25%;  // 第一列视频的中心位置
+      transform: translate(-50%, -50%);
+      z-index: 15;
+      width: 60px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+      
+      img {
+        height: 30px;
+        width: auto;
+        opacity: 0.9;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+        // 垂直箭头不旋转，指向下面
+      }
+    }
+    
+    // 响应式设计
+  @media (max-width: 1200px) {
+    padding: 15px;
+    
+    .video-grid {
+      gap: 15px;
+      
+      .video-row {
+        gap: 15px;
+        min-height: 250px;
+        
+        .video-section {
+          .section-title {
+            font-size: 18px;
+            padding: 10px 0;
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    padding: 10px;
+    
+    .video-grid {
+      gap: 10px;
+      
+      .video-row {
+        flex-direction: column;
+        gap: 10px;
+        min-height: auto;
+        
+        .video-section {
+          min-height: 180px;
+          
+          .section-title {
+            font-size: 16px;
+            padding: 8px 0;
+          }
+          
+          .video-container {
+            min-height: 150px;
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-height: 600px) {
+    .video-grid {
+      .video-row {
+        min-height: 200px;
+        
+        .video-section {
+          min-height: 150px;
+          
+          .video-container {
+            min-height: 120px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 确保视频播放控制栏可见
+.video-container video::-webkit-media-controls-panel {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.video-container video::-webkit-media-controls-play-button,
+.video-container video::-webkit-media-controls-volume-slider,
+.video-container video::-webkit-media-controls-timeline {
+  filter: brightness(1.2);
+} 
